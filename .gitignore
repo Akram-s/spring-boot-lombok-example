@@ -3,7 +3,7 @@
 target/
 logs/
 dependency-reduced-pom.xml
-
+bin/
 # Eclipse
 .classpath
 .project
@@ -15,6 +15,7 @@ dependency-reduced-pom.xml
 
 .gradle
 settings.gradle
+settings.json
 build/
 
 # Package Files #
