@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.model.Student;
 import com.services.StudentService;
 
@@ -16,6 +18,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+
+import io.swagger.annotations.ApiParam;
 
 @RestController
 @Api(value="Student", description="Operations pertaining to student database")
@@ -41,13 +45,13 @@ public class StudentController {
 
     @ApiOperation(value = "Search a student with an ID",response = Student.class)
     @GetMapping("/getStudent/{id}")
-    public Student getStudent(@PathVariable Long id) {
+    public Student getStudent(@ApiParam(value = "Student id to fetch", required = true) @Valid @PathVariable Long id) {
         return studentService.getById(id);
     }
 
     @ApiOperation(value = "Update student data by id")
     @PutMapping("/updateStudent")
-    public Student updateStudent(@RequestParam Long id, @RequestBody Student student) {
+    public Student updateStudent(@ApiParam(value = "Student id to fetch and update", required = true) @Valid @RequestParam Long id, @ApiParam(value = "Student data to be updated in database table", required = true) @Valid @RequestBody Student student) {
         studentService.deleteById(id);
         studentService.save(student);
         return student;
@@ -55,14 +59,14 @@ public class StudentController {
 
     @ApiOperation(value = "Delete student data by id")
     @DeleteMapping("/deleteStudent/{id}")
-    public String removeStudent(@PathVariable Long id) {
+    public String removeStudent(@ApiParam(value = "Student data to delete from table", required = true) @Valid @PathVariable Long id) {
         studentService.deleteById(id);
         return "Deleted student  with id:  " + id;
     }
 
     @ApiOperation(value = "Add a new student",response = Student.class)
     @PostMapping(path="/createStudent", consumes= {"application/json"})
-    public Student createStudent(@RequestBody Student student) {
+    public Student createStudent(@ApiParam(value = "Student data to be stored in database table", required = true) @Valid @RequestBody Student student) {
         studentService.save(student);
         return student;
     }
