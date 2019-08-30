@@ -7,10 +7,14 @@ import javax.persistence.Id;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Student {
@@ -19,5 +23,5 @@ public class Student {
 	private @NonNull Long id;
 	private @NonNull String firstName;
 	private @NonNull String lastName;
-	private int age;
+	private @NonNull Integer age;
 }

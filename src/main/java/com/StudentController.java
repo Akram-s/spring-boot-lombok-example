@@ -24,18 +24,24 @@ public class StudentController {
     public List<Student> getStudents() {
         return studentService.getAll();
     }
+    @GetMapping("/getStudent/{id}")
+    public Student getStudent(@PathVariable Long id) {
+        return studentService.getById(id);
+    }
     @RequestMapping("/updateStudent")
     public String updateStudent(@RequestParam Long id) {
         return "Update student data for the given id!";
     }
-    @RequestMapping("/deleteStudent/{id}")
+    @DeleteMapping("/deleteStudent/{id}")
     public String removeStudent(@PathVariable Long id) {
-        return "Delete student!";
+        Student s = studentService.getById(id);
+        studentService.delete(s);
+        return "Deleted student  with id:  " + id;
     }
-    @RequestMapping("/createStudent")
-    public String createStudent(Student student) {
+    @PostMapping(path="/createStudent", consumes= {"application/json"})
+    public Student createStudent(@RequestBody Student student) {
         studentService.save(student);
-        return "Create student!";
+        return student;
     }
 
 }

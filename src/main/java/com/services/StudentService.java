@@ -18,6 +18,10 @@ public class StudentService {
 
 	}
 
+    public void delete(Student student){
+        studentRepository.delete(student);
+    }
+
     public List<Student> getAll(){
 		return studentRepository.findAll();
 	}
