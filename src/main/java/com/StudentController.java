@@ -2,6 +2,7 @@ package com;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class StudentController {
@@ -15,11 +16,11 @@ public class StudentController {
         return "List all students from database!";
     }
     @RequestMapping("/updateStudent")
-    public String updateStudent() {
+    public String updateStudent(@RequestParam Long id) {
         return "Update student data for the given id!";
     }
-    @RequestMapping("/deleteStudent")
-    public String removeStudent() {
+    @RequestMapping("/deleteStudent/{id}")
+    public String removeStudent(@PathVariable Long id) {
         return "Delete student!";
     }
     @RequestMapping("/createStudent")
