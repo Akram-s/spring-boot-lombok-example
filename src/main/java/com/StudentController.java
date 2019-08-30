@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-import com.dao.Student;
+import com.model.Student;
 import com.services.StudentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
