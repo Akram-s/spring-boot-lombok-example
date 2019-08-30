@@ -20,7 +20,13 @@ public class StudentService {
 
     public void delete(Student student){
         studentRepository.delete(student);
+
     }
+    public void deleteById(Long id){
+        studentRepository.deleteById(id);
+
+    }
+
 
     public List<Student> getAll(){
 		return studentRepository.findAll();

@@ -28,14 +28,15 @@ public class StudentController {
     public Student getStudent(@PathVariable Long id) {
         return studentService.getById(id);
     }
-    @RequestMapping("/updateStudent")
-    public String updateStudent(@RequestParam Long id) {
-        return "Update student data for the given id!";
+    @PutMapping("/updateStudent")
+    public Student updateStudent(@RequestParam Long id, @RequestBody Student student) {
+        studentService.deleteById(id);
+        studentService.save(student);
+        return student;
     }
     @DeleteMapping("/deleteStudent/{id}")
     public String removeStudent(@PathVariable Long id) {
-        Student s = studentService.getById(id);
-        studentService.delete(s);
+        studentService.deleteById(id);
         return "Deleted student  with id:  " + id;
     }
     @PostMapping(path="/createStudent", consumes= {"application/json"})

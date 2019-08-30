@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
 @Entity
@@ -19,7 +17,7 @@ import lombok.Getter;
 @RequiredArgsConstructor
 public class Student {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private @NonNull Long id;
 	private @NonNull String firstName;
 	private @NonNull String lastName;
