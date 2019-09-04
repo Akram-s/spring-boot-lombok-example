@@ -1,25 +1,35 @@
 package com.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import org.springframework.data.couchbase.core.mapping.Document;
+
+import com.couchbase.client.java.repository.annotation.Field;
+import com.couchbase.client.java.repository.annotation.Id;
+
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.Getter;
+import lombok.Data;
 
-@Entity
-@Getter
-@Setter
+@Document
+@Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Student {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
-	private @NonNull Long id;
-	private @NonNull String firstName;
-	private @NonNull String lastName;
-	private @NonNull Integer age;
+	@NonNull
+	@Field
+	private Long id;
+
+	@NonNull
+	@Field
+	private String firstName;
+
+	@NonNull
+	@Field
+	private String lastName;
+
+	@NonNull
+	@Field
+	private Integer age;
 }

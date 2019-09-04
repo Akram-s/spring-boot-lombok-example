@@ -1,9 +1,11 @@
 package com.services;
 
-import java.util.List;
 
 import com.model.Student;
 import com.dao.StudentRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,11 +28,6 @@ public class StudentService {
         studentRepository.deleteById(id);
 
     }
-
-
-    public List<Student> getAll(){
-		return studentRepository.findAll();
-	}
 
     public Student getById(Long id){
 
